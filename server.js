@@ -33,8 +33,8 @@ const server = app.listen(PORT, console.log(`Server started on ${PORT}`));
 
 
 //mount routers
-app.use('/api/v1', require('./route/quote'));
 app.use('/api/v1', require('./route/auth'))
+app.use('/api/v1', require('./route/quote'));
 app.use(ErrorHandler);
 
 //handle unhandled rejection
