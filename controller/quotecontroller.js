@@ -1,5 +1,6 @@
 const asyncHandler = require("../middleware/async");
 const Quote = require('../models/Quote');
+const { random } = require('lodash')
 
 
 const createQuoteController = asyncHandler(async(req, res, next) => {
@@ -13,12 +14,22 @@ const createQuoteController = asyncHandler(async(req, res, next) => {
     }
 });
 
+// const getAllQuotesController = asyncHandler(async(req, res, next) => {
+//     const quotes = await Quote.find();
+//     if (quotes) {
+//         res.status(200).json({
+//             message: 'Quotes retrived successfully',
+//             data: quotes
+//         })
+//     }
+// });
 const getAllQuotesController = asyncHandler(async(req, res, next) => {
     const quotes = await Quote.find();
-    if (quotes) {
+    let randomQuote = quotes[random(0, quotes.length - 1)]
+    if (randomQuote) {
         res.status(200).json({
-            message: 'Quotes retrived successfully',
-            data: quotes
+            message: 'Quote retrived successfully',
+            data: randomQuote
         })
     }
 });
