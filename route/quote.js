@@ -6,9 +6,9 @@ const router = express.Router();
 
 const { createQuoteController, getAllQuotesController } = require('../controller/quotecontroller');
 
-// router.use(protect);
-router.post('/createQuote', createQuoteController);
+router.use(protect);
 router.get('/getQuotes', getAllQuotesController);
+router.post('/createQuote', createQuoteController);
 
 
 module.exports = router;
