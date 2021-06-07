@@ -2,6 +2,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const connectDB = require('./config/db');
 const ErrorHandler = require('./middleware/error');
 
@@ -30,7 +31,8 @@ const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, console.log(`Server started on ${PORT}`));
 
 
-
+//handle cors
+app.use(cors());
 
 //mount routers
 app.use('/api/v1', require('./route/auth'))
